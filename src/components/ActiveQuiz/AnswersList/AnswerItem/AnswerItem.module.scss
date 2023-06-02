@@ -1,0 +1,37 @@
+.AnswerItem {
+  @apply my-2.5 py-2.5 px-3.5 cursor-pointer text-xl transition w-full text-gray-900 bg-white border-[1.5px] border-cyan-200 focus:outline-none hover:bg-slate-100 focus:ring-4 focus:ring-gray-200 font-semibold rounded-md transition-all text-left flex items-center gap-6 outline-none;
+
+  &.success {
+    @apply bg-green-500 text-white border-none;
+  }
+
+  &.success .letter{
+    @apply bg-green-500 text-white shadow-md;
+  }
+
+  &.error {
+    @apply bg-red-500 text-white border-none;
+  }
+
+  &.error .letter{
+    @apply bg-red-500 text-white shadow-md;
+  }
+}
+
+.answer {
+  @apply flex items-center gap-3.5;
+}
+
+.letter {
+  @apply h-14 w-14 flex items-center justify-center px-6 py-2.5 bg-blue-500  text-white leading-tight uppercase rounded-full shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out font-semibold;
+
+  &.checked {
+    @apply rounded-2xl;
+  }
+}
+
+
+
+
+
+

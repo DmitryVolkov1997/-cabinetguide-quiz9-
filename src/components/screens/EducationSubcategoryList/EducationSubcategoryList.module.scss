@@ -1,0 +1,45 @@
+.EducationSubcategoryList {
+  @apply flex justify-center grow pt-40 w-full;
+}
+
+.container {
+  @apply max-w-[800px] w-full px-3.5 mx-auto;
+}
+
+.item {
+  @apply mb-3.5;
+}
+
+.link {
+  @apply flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 hover:shadow transition;
+}
+
+.go {
+  @apply inline-flex text-white bg-green-600 text-base items-center justify-center px-2 py-0.5 ml-3 font-medium rounded text-center;
+}
+
+.title {
+  @apply text-xl flex-1 ml-3 pr-3;
+}
+
+.row {
+  @apply flex items-center;
+}
+
+@media (max-width: 576px) {
+  .link {
+    @apply flex flex-col items-center;
+  }
+
+  .go {
+    @apply flex flex-col mt-3.5 items-start px-4 py-2.5;
+  }
+
+  .arrow {
+    @apply hidden;
+  }
+
+  .title {
+    @apply ml-0 text-center;
+  }
+}

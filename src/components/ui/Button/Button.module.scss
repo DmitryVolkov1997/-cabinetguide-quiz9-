@@ -1,0 +1,19 @@
+.button {
+  &.dark {
+    @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-semibold rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 transition-all;
+  }
+
+  &.green {
+    @apply focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-xl px-5 py-2.5 mr-2 mb-2 transition-all;
+  }
+
+  &.red {
+    @apply focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl px-5 py-2.5 mr-2 mb-2;
+  }
+
+  &:disabled {
+    @apply text-gray-900 shadow bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-xl px-5 py-2.5 text-center items-center mr-2 mb-2;
+  }
+}
+
+

@@ -1,0 +1,48 @@
+.auth {
+  @apply h-screen;
+
+  &__container {
+    @apply container px-6 py-12 h-full;
+  }
+
+  &__row {
+    @apply flex justify-center items-center flex-wrap h-full gap-6 text-gray-800;
+  }
+
+  &__left {
+    @apply md:w-8/12 lg:w-6/12 mb-12 md:mb-0;
+  }
+
+  &__bg {
+    @apply w-full;
+  }
+
+  &__right {
+    @apply md:w-8/12 lg:w-5/12 lg:ml-20;
+  }
+
+  &__input {
+    @apply block w-full px-3 py-2.5 text-xl font-normal text-gray-500 bg-white bg-clip-padding border border-solid border-gray-200 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder:text-gray-400 mb-6;
+  }
+
+  &__bottom {
+    @apply flex justify-between items-center mb-6;
+  }
+
+  &__checkbox {
+    @apply appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer;
+  }
+
+  &__label {
+    @apply inline-block text-gray-800;
+  }
+
+  &__border {
+    @apply flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5;
+  }
+
+  &__link {
+    @apply text-center font-semibold mx-4 mb-0;
+  }
+}
+

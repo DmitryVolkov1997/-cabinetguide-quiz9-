@@ -1,0 +1,23 @@
+.dashboard {
+  @apply flex flex-col items-center justify-center grow pt-40 w-full;
+}
+
+.scroll {
+  @apply shadow-xl;
+}
+
+.title {
+  @apply mb-3;
+}
+
+.delete {
+  @apply focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 cursor-pointer;
+}
+
+.remove {
+  @apply text-red-500 hover:text-red-700 text-3xl cursor-pointer;
+
+  &.disabled {
+    @apply text-red-400 hover:text-red-400;
+  }
+}

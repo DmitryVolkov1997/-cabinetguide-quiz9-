@@ -1,0 +1,7 @@
+.link {
+  @apply flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 hover:shadow transition;
+}
+
+.go {
+  @apply inline-flex text-white bg-green-600 text-base items-center justify-center px-2 py-0.5 ml-3 font-medium rounded;
+}

@@ -1,0 +1,24 @@
+.UnsuccessfulForm {
+  @apply flex justify-center items-center py-40 grow w-full;
+}
+
+.row {
+  @apply max-w-[700px] w-full flex flex-col items-center;
+}
+
+.unsuccessful__icon {
+  @apply text-8xl mb-5 text-red-600;
+}
+
+.title {
+  @apply text-5xl text-red-600 text-center font-medium leading-none italic mb-5;
+}
+
+.back {
+  @apply text-white text-center bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-5 py-2.5 mb-5 flex items-center;
+}
+
+.icon__back {
+  @apply mr-2;
+}
+

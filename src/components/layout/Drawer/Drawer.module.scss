@@ -1,0 +1,27 @@
+.drawer {
+  @apply fixed z-50 h-screen p-4 overflow-y-auto bg-white w-[300px] shadow-md -left-[300px] transition-all ease-in;
+
+  &.open {
+    @apply left-0;
+  }
+}
+
+.row {
+  @apply flex items-center flex-col text-gray-800 border-b border-separate;
+}
+
+.title {
+  @apply mb-4 text-xl font-semibold;
+}
+
+.list {
+  @apply text-2xl font-medium p-5 hover:opacity-90 transition;
+}
+
+.item {
+  @apply mb-4 flex items-center rounded-lg hover:bg-gray-100 transition border border-separate relative;
+}
+
+.link {
+  @apply text-inherit transition p-2 pl-3.5 block w-full;
+}

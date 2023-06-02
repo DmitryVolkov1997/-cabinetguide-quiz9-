@@ -1,0 +1,16 @@
+.MenuToggle {
+  @apply fixed top-10 left-10 cursor-pointer z-50 transition-all ease-in;
+
+  &:hover {
+    @apply opacity-80;
+  }
+
+  &.open {
+    @apply left-[320px] text-white;
+  }
+}
+
+.times,
+.bars {
+  @apply text-5xl;
+}

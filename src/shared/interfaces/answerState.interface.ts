@@ -1,0 +1,1 @@
+export type AnswerState = null | { [key: number]: string }

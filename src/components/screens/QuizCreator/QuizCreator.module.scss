@@ -1,0 +1,41 @@
+.QuizCreator {
+  @apply flex justify-center items-center py-10 grow w-full;
+}
+
+.row {
+  @apply flex items-start justify-between max-w-7xl w-full gap-3;
+}
+
+.uploadForm {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  @apply p-5 rounded-lg max-w-xl w-full;
+}
+
+.body {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  @apply max-w-[600px] w-full flex flex-col items-start rounded-lg p-5 text-left text-2xl font-medium border;
+}
+
+.title {
+  @apply mb-5;
+}
+
+.form {
+  @apply w-full;
+}
+
+.label {
+  @apply block mb-1 text-xl font-bold text-gray-900;
+}
+
+.error {
+  @apply text-base text-red-500 font-semibold text-left absolute left-0;
+}
+
+.select {
+  @apply mt-6;
+}
+

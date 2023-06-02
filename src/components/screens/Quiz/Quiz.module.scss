@@ -1,0 +1,31 @@
+.quiz {
+  @apply flex flex-col items-center py-40 grow w-full min-h-screen bg-teal-50;
+}
+
+.title {
+  @apply mb-5 text-center;
+}
+
+.row {
+  @apply max-w-[700px] w-full text-center;
+}
+
+.modalBody {
+  @apply mt-2;
+}
+
+.modalText {
+  @apply text-xl text-gray-500 pt-4 text-red-400 font-medium;
+}
+
+.modalButtons {
+  @apply mt-7 border-t border-separate pt-7 flex gap-6;
+}
+
+
+
+@media(max-width: 448px) {
+  .modalButtons {
+    @apply flex-col gap-3;
+  }
+}
