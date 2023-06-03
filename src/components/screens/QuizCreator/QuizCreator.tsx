@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FormEvent, MouseEvent, useState } from 'react'
+import React, { ChangeEvent, FC, FormEvent, MouseEvent, useEffect, useState } from 'react'
 import styles from './QuizCreator.module.scss'
 import cn from 'classnames'
 import { IoMdCopy } from 'react-icons/io'
@@ -12,7 +12,12 @@ import { IQuiz } from '@/shared/interfaces/quiz.interface'
 import axios from 'axios'
 import { QUIZ_BASE_URL } from '@/configs/constants'
 import CustomSelect from '@/components/screens/QuizCreator/CustomSelect/CustomSelect'
-import { institutionType, options, subcategoryType } from '@/components/screens/QuizCreator/options'
+import {
+	institutionType,
+	options,
+	subcategoryFirst,
+	subcategorySecond
+} from '@/components/screens/QuizCreator/options'
 import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage'
 import { storage } from '@/firebase'
 import { useClipboard } from 'use-clipboard-copy'
@@ -83,6 +88,8 @@ const QuizCreator: FC<QuizCreatorProps> = (props): JSX.Element => {
 	const [show, setShow] = useState(false)
 	const [checked, setChecked] = useState<boolean>(false)
 	const [showError, setShowError] = useState<boolean>(false)
+	const [educationValue, setEducationValue] = useState<string>('Бакалавриат')
+
 	const handleEmail = (value: string) => {
 		setEmail(value)
 	}
@@ -235,6 +242,23 @@ const QuizCreator: FC<QuizCreatorProps> = (props): JSX.Element => {
 		}
 	}
 
+	const handleEducationListChange = (value: string) => {
+		switch (value) {
+			case 'Бакалавриат':
+				return subcategoryFirst
+			case 'Магистратура':
+				return subcategorySecond
+			case 'Докторантура':
+				return subcategorySecond
+			default:
+				return subcategoryFirst
+		}
+	}
+
+	useEffect(() => {
+		handleEducationListChange(educationValue)
+	}, [educationValue])
+
 	return (
 		<>
 			{
@@ -301,7 +325,10 @@ const QuizCreator: FC<QuizCreatorProps> = (props): JSX.Element => {
 											Образовательная программа
 										</label>
 										<CustomSelect className={'mb-4'}
-																	onChange={(value: { value: number, label: number }) => setFieldValue('institutionType', value.value)}
+																	onChange={(value: { value: number, label: number }) => {
+																		setFieldValue('institutionType', value.value)
+																		setEducationValue(value.value.toString())
+																	}}
 																	options={institutionType}
 																	value={values.institutionType} />
 										<label
@@ -310,12 +337,18 @@ const QuizCreator: FC<QuizCreatorProps> = (props): JSX.Element => {
 											Подкатегории
 										</label>
 										<CustomSelect className={'mb-4'}
-																	onChange={(value: { value: number, label: number }) => setFieldValue('subcategoryType', value.value)}
-																	options={subcategoryType}
+																	onChange={(value: {
+																		value: number,
+																		label: number
+																	}) => setFieldValue('subcategoryType', value.value)}
+																	options={handleEducationListChange(educationValue)}
 																	value={values.subcategoryType} />
 										{renderInputs(values, handleChange, handleBlur, touched, errors)}
 										<CustomSelect className={styles.select}
-																	onChange={(value: { value: number, label: number }) => setFieldValue('rightAnswerId', value.value)}
+																	onChange={(value: {
+																		value: number,
+																		label: number
+																	}) => setFieldValue('rightAnswerId', value.value)}
 																	options={options}
 																	value={values.rightAnswerId} />
 										<Button className={cn('mt-5')} appearance={'green'} rounded={'rounded'}
@@ -376,7 +409,7 @@ const QuizCreator: FC<QuizCreatorProps> = (props): JSX.Element => {
 						</form>
 					</div>
 				</div> : <Auth onChangeEmail={handleEmail} email={email} onChangePassword={handlePassword} password={password}
-											 handleSubmit={handleSubmit} handleChecked={handleChecked} checked={checked} error={showError}/>
+											 handleSubmit={handleSubmit} handleChecked={handleChecked} checked={checked} error={showError} />
 			}
 		</>
 	)

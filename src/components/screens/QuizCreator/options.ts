@@ -9,21 +9,19 @@ const options = [
 const institutionType = [
 	{ value: 'Бакалавриат', label: 'Бакалавриат' },
 	{ value: 'Магистратура', label: 'Магистратура' },
-	{ value: 'Докторантура', label: 'Докторантура' },
-	{
-		value: 'Колледж инновационных технологий',
-		label: 'Колледж инновационных технологий'
-	}
+	{ value: 'Докторантура', label: 'Докторантура' }
 ]
 
-const subcategoryType = [
+const subcategoryFirst = [
 	{ value: 'Предметы ЕНТ(полное обучение)', label: 'Предметы ЕНТ(полное обучение)' },
 	{ value: 'Тесты на определение готовности к обучению', label: 'Тесты на определение готовности к обучению' },
-	{
-		value: 'Предметы сокращённого обучения выпускников колледжей',
-		label: 'Предметы сокращённого обучения выпускников колледжей'
-	},
 	{ value: 'Другое', label: 'Другое' }
 ]
 
-export { options, institutionType, subcategoryType }
+const subcategorySecond = [
+	{ value: 'Тесты на определение готовности к обучению', label: 'Тесты на определение готовности к обучению' },
+	{ value: 'Другое', label: 'Другое' }
+]
+
+
+export { options, institutionType, subcategorySecond, subcategoryFirst }

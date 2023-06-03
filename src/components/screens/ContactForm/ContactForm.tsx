@@ -33,6 +33,7 @@ import { Stack, TextField } from '@mui/material'
 import { DesktopDatePicker } from '@mui/x-date-pickers'
 import { Link, useNavigate } from 'react-router-dom'
 import { ContactsInterface } from '@/shared/interfaces/contacts.interface'
+import { log } from 'util'
 
 
 const stylesSelect = {
@@ -74,6 +75,11 @@ const ContactForm: FC<ContactFormProps> = () => {
 
 	const navigate = useNavigate()
 	const [enabled, setEnabled] = useState(true)
+	const [formStudyData, setFormStudyData] = useState([])
+	const [formPaymentData, setFormPaymentData] = useState([])
+	const [consultantsData, setConsultantsData] = useState([])
+	const [achievementsData, setAchievementsData] = useState([])
+	const [languagesData, setLanguagesData] = useState([])
 
 	const renderLabel = (name: string) => {
 		switch (name) {
@@ -243,6 +249,50 @@ const ContactForm: FC<ContactFormProps> = () => {
 		getFormStatus().then(e => e !== undefined && console.log(e))
 	}, [])
 
+	const postOption = async () => {
+		const { data } = await axios.post(`https://contact-form-2d4a6-default-rtdb.firebaseio.com/form_study.json`, formStudy)
+	}
+
+	const fetchData = async () => {
+		try {
+			const req1 = axios.get('https://contact-form-2d4a6-default-rtdb.firebaseio.com/form_study.json')
+			const req2 = axios.get('https://contact-form-2d4a6-default-rtdb.firebaseio.com/form_payment.json')
+			const req3 = axios.get('https://contact-form-2d4a6-default-rtdb.firebaseio.com/achievements.json')
+			const req4 = axios.get('https://contact-form-2d4a6-default-rtdb.firebaseio.com/consultants.json')
+			const req5 = axios.get('https://contact-form-2d4a6-default-rtdb.firebaseio.com/languages.json')
+
+			const res = await Promise.all(
+				[req1, req2, req3, req4, req5]
+			)
+
+			Object.keys(res[0].data).map(key=>{
+				setFormStudyData(res[0].data[key])
+			})
+
+			Object.keys(res[1].data).map(key=>{
+				setFormPaymentData(res[1].data[key])
+			})
+
+			Object.keys(res[2].data).map(key=>{
+				setAchievementsData(res[2].data[key])
+			})
+
+			Object.keys(res[3].data).map(key=>{
+				setConsultantsData(res[3].data[key])
+			})
+
+			Object.keys(res[4].data).map(key=>{
+				setLanguagesData(res[4].data[key])
+			})
+
+		} catch (error) {
+			console.log(error.message)
+		}
+	}
+
+	useEffect(() => {
+		fetchData().then(e => e !== undefined && console.log(e))
+	}, [])
 
 	return (
 		<>
@@ -257,6 +307,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 						заполнять по удостоверению личности*
 					</p>
 					<img className={styles.main__logo} src={Logo} alt='logo' />
+					<button onClick={postOption}>click</button>
 				</div>
 				<div className={styles.wrapper}>
 					<div className={styles.ContactForm}>
@@ -541,7 +592,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 													setSelectFormStudy(value.value)
 												}
 												}
-												options={formStudy}
+												options={formStudyData}
 												value={values.formStudy}
 												placeholder={'Оқу түрі (Форма обучения)'}
 											/>
@@ -568,7 +619,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 											onChange={(value: { value: string; label: string }) =>
 												setFieldValue('achievements', value.value)
 											}
-											options={achievements}
+											options={achievementsData}
 											value={values.achievements}
 											placeholder={'Награды и достижение'}
 										/>
@@ -578,7 +629,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 											onChange={(value: { value: string; label: string }) =>
 												setFieldValue('formPayment', value.value)
 											}
-											options={formPayment}
+											options={formPaymentData}
 											value={values.formPayment}
 											placeholder={
 												'Предполагаемая форма оплаты за обучение в ВУЗе'
@@ -595,7 +646,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 												onChange={(value: { value: string; label: string }) =>
 													setFieldValue('languages', value.value)
 												}
-												options={languages}
+												options={languagesData}
 												value={values.languages}
 												placeholder={'Оқу тілі (Язык обучения)'}
 											/>
@@ -614,7 +665,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 												onChange={(value: { value: string; label: string }) =>
 													setFieldValue('consultantDepartment', value.value)
 												}
-												options={consultantDepartment}
+												options={consultantsData}
 												value={values.consultantDepartment}
 												placeholder={
 													'Кафедра-консультант - от кого получена информация о ВУЗе)'
