@@ -249,10 +249,6 @@ const ContactForm: FC<ContactFormProps> = () => {
 		getFormStatus().then(e => e !== undefined && console.log(e))
 	}, [])
 
-	const postOption = async () => {
-		const { data } = await axios.post(`https://contact-form-2d4a6-default-rtdb.firebaseio.com/form_study.json`, formStudy)
-	}
-
 	const fetchData = async () => {
 		try {
 			const req1 = axios.get('https://contact-form-2d4a6-default-rtdb.firebaseio.com/form_study.json')
@@ -309,13 +305,12 @@ const ContactForm: FC<ContactFormProps> = () => {
 						заполнять по удостоверению личности*
 					</p>
 					<img className={styles.main__logo} src={Logo} alt='logo' />
-					<button onClick={postOption}>click</button>
 				</div>
 				<div className={styles.wrapper}>
 					<div className={styles.ContactForm}>
 						{
 							!enabled && (
-								<Htag tag='h1' className='text-red-700 mb-4'>
+								<Htag tag='h1' className='text-red-700 mb-4 text-center'>
 									Регистрация временно приостановлена
 								</Htag>
 							)
